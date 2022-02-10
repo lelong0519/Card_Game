@@ -7,6 +7,7 @@ package exercise1;
 /**
  *
  * @author swage
+ * @author Long Le
  */
 import exercise1.Card.Suit;
 import exercise1.Card.Value;
@@ -17,8 +18,13 @@ import java.util.Scanner;
  * This class models a simple card guessing game
  *
  * @author Paul Bonenfant
+ * @author longl
  */
 public class CardGame {
+    
+    public static void printInfo() {
+        
+    }
 
     /**
      * @param args the command line arguments
@@ -33,13 +39,6 @@ public class CardGame {
         
         Card[] hand = CardHandGenerator.generateHand(7, cardValues, cardSuits);
 
-
-
-        // print them out for debugging purposes
-        System.out.println("Here are the cards in the hand");
-        for (Card card : hand) {
-            System.out.printf("%s of %s\n", card.getValue(), card.getSuit());
-        }
 
         // Now ask the user for a card
         //Added Exclamation points
@@ -67,7 +66,17 @@ public class CardGame {
                 break;
             }
         }
-
+        
+        //will only print out hand of cards on correct guess
+        //will also invoke printInfo() method
+        if (match != false) {
+            printInfo();
+            System.out.println("Here are the cards in the hand");
+        for (Card card : hand) {
+            System.out.printf("%s of %s\n", card.getValue(), card.getSuit());
+            }
+        }
+        
         String response = match ? "Right guess" : "No match";
 
         System.out.println(response);
